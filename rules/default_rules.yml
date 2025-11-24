@@ -1,0 +1,28 @@
+- id: "NET001"
+  name: "Outbound HTTP"
+  description: "Outbound HTTP request detected. Ensure domain is approved."
+  severity: "medium"
+  category: "network"
+  match_type: "ast"
+  config: {modules: ["requests", "httpx", "aiohttp"]}
+- id: "NET002"
+  name: "SMTP Usage"
+  description: "Direct SMTP usage detected; prefer vetted email providers."
+  severity: "high"
+  category: "network"
+  match_type: "ast"
+  config: {modules: ["smtplib"]}
+- id: "FS001"
+  name: "Filesystem Write"
+  description: "Potentially unsafe filesystem access detected."
+  severity: "medium"
+  category: "filesystem"
+  match_type: "ast"
+  config: {functions: ["open", "os.remove", "os.rmdir", "shutil.rmtree", "os.walk"]}
+- id: "SEC001"
+  name: "Secrets Misuse"
+  description: "Possible secret exposed via environment variable usage."
+  severity: "medium"
+  category: "secrets"
+  match_type: "ast"
+  config: {}

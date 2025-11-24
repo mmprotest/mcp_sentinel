@@ -1,0 +1,12 @@
+server:
+  name: secure-example
+
+tools:
+  - name: send_email
+    outbound_http: true
+    allowed_domains:
+      - "api.postmarkapp.com"
+    filesystem: "none"
+  - name: read_logs
+    outbound_http: false
+    filesystem: "read_only"

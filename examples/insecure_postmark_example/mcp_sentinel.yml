@@ -1,0 +1,17 @@
+server:
+  name: insecure-postmark
+
+tools:
+  - name: send_email
+    outbound_http: true
+    allowed_domains:
+      - "api.postmarkapp.com"
+    filesystem: "none"
+  - name: open_anything
+    outbound_http: false
+    filesystem: "none"
+
+# Running `mcp-sentinel mcp-scan examples/insecure_postmark_example` should flag:
+# - Outbound HTTP to unapproved domain (evilmailer.test)
+# - Filesystem access via open in open_anything
+# - Policy mismatches because open_anything touches filesystem despite filesystem: none
